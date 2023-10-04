@@ -6,7 +6,7 @@
 /*   By: plinscho <plinscho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:23:00 by plinscho          #+#    #+#             */
-/*   Updated: 2023/09/25 16:59:34 by plinscho         ###   ########.fr       */
+/*   Updated: 2023/09/28 17:23:18 by plinscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ void	send_message(int pid, const char *msg);
 
 int main(int argc, char **argv)
 {
-	struct sigaction	sa;
 	pid_t				pid;
 	
-	ft_printf("Client Pid: %d\n", getpid());
 	check_args(argc, argv);
 	pid = ft_atoi(argv[1]);
 	send_message(pid, argv[2]);
 	return (0);
-	
 }
 
 void	check_args(int argc, char **argv)
@@ -65,17 +62,16 @@ void	send_message(int s_pid, const char *msg)
 	while(msg[i])
 	{
 		c = msg[i];
-		bit = 0;
-		while (bit < 8)
+		bit = 7;
+		while (bit >= 0)
 		{
-			if ((c >> bit) & 1)
+			if (((c >> bit) & 1) == 1)
 				kill(s_pid, SIGUSR1);
 			else
 				kill(s_pid, SIGUSR2);
-			bit++;
-			usleep(100);
+			bit--;
+			usleep(70);
 		}
-		usleep(1000);
 		i++;
 	}
 	return ;
