@@ -6,7 +6,7 @@
 #    By: plinscho <plinscho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 19:22:38 by plinscho          #+#    #+#              #
-#    Updated: 2023/09/28 17:59:06 by plinscho         ###   ########.fr        #
+#    Updated: 2023/10/05 18:57:25 by plinscho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ clean:
 fclean: clean
 	@$(MAKE) fclean -s -C $(LIBFT_PATH)
 	@$(RM) $(SERVER) $(CLIENT) 
-	@echo "Clean del Client y del Servidor\n"
+	@echo "Executables Removed\n"
 
 re: fclean all
 

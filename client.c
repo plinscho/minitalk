@@ -6,7 +6,7 @@
 /*   By: plinscho <plinscho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:23:00 by plinscho          #+#    #+#             */
-/*   Updated: 2023/09/28 17:23:18 by plinscho         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:56:46 by plinscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 void	check_args(int argc, char **argv);
 void	send_message(int pid, const char *msg);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	pid_t				pid;
-	
+
 	check_args(argc, argv);
 	pid = ft_atoi(argv[1]);
 	send_message(pid, argv[2]);
@@ -32,7 +32,7 @@ void	check_args(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_printf("Argument error\n");
+		ft_printf("Argument error | ./client [PID_SERVER] [STRING]\n");
 		exit (1);
 	}
 	i = 0;
@@ -59,7 +59,7 @@ void	send_message(int s_pid, const char *msg)
 	int		bit;
 
 	i = 0;
-	while(msg[i])
+	while (msg[i])
 	{
 		c = msg[i];
 		bit = 7;
